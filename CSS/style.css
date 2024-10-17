@@ -1,0 +1,200 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #111;
+  background-image: repeating-linear-gradient(
+    45deg,
+    #222 0px,
+    #222 25px,
+    #111 25px,
+    #111 50px
+  );
+  background-size: 50px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Game board styling */
+#board {
+  display: grid;
+  grid-template-rows: repeat(18, 1fr);
+  grid-template-columns: repeat(18, 1fr);
+  width: 95vmin; /* Increased to occupy more space on small screens */
+  height: 95vmin;
+  background-color: hsl(0, 0%, 0%);
+  border: 5px solid #555;
+}
+
+/* Snake and food styling */
+.snake {
+  background-color: #0f0;
+  border: 2px solid #080;
+}
+
+.head {
+  background-color: #ff0;
+  border: 2px solid #aa0;
+}
+
+.food {
+  background-color: #f00;
+  border: 2px solid #b00;
+}
+
+/* Scoreboard styling */
+#scoreBox,
+#hiscoreBox {
+  font-family: "Courier New", monospace;
+  color: #fff;
+  font-size: 30px;
+  text-shadow: 1px 1px 0 #000;
+  margin: 10px;
+}
+
+/* Adjust positions of score and hiscore for mobile */
+#hiscoreBox {
+  position: absolute;
+  top: 20px;
+  right: 100px;
+}
+
+#scoreBox {
+  position: absolute;
+  top: 70px;
+  right: 100px;
+}
+
+/* Button styles */
+.controls {
+  display: none; /* Hide controls on larger screens */
+}
+
+.control-btn {
+  width: 80px;
+  height: 80px;
+  font-size: 24px;
+  background-color: #ff4500; /* Make buttons stand out */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Hover effect for buttons */
+.control-btn:hover {
+  background-color: #ff6347;
+}
+
+#up {
+  grid-area: up;
+}
+
+#down {
+  grid-area: down;
+}
+
+#left {
+  grid-area: left;
+}
+
+#right {
+  grid-area: right;
+}
+
+/* Instructions modal styling */
+.instructions {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  display: none;
+  z-index: 10;
+  width: 40%; /* Increased width */
+}
+
+.instructions h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.instructions p {
+  margin: 5px 0;
+  font-size: 18px;
+}
+
+/* Responsive adjustments for mobile devices */
+@media (max-width: 768px) {
+  #board {
+    width: 90vmin;
+    height: 90vmin;
+  }
+
+  .controls {
+    display: grid;
+    grid-template-areas:
+      ". up ."
+      "left down right";
+    gap: 10px;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .control-btn {
+    width: 70px;
+    height: 70px;
+    font-size: 20px;
+  }
+
+  #hiscoreBox,
+  #scoreBox {
+    right: 50px;
+    font-size: 18px;
+  }
+
+  .instructions {
+    width: 85%; /* Make instruction modal larger */
+    font-size: 16px;
+  }
+}
+
+/* Further adjustments for smaller screens */
+@media (max-width: 480px) {
+  #board {
+    width: 95vmin;
+    height: 95vmin; /* Make the board bigger */
+  }
+
+  .control-btn {
+    width: 65px;
+    height: 65px;
+    font-size: 18px;
+  }
+
+  #hiscoreBox,
+  #scoreBox {
+    right: 30px;
+    font-size: 25px;
+  }
+
+  .instructions {
+    width: 95%; /* Make modal cover almost full width on small devices */
+    font-size: 14px;
+  }
+}
