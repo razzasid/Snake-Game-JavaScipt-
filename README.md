@@ -18,7 +18,7 @@ You can check out the live version of the game here:
 
 This Snake Game is a simple, yet fun web-based game where you control a snake to eat food and grow in size. The goal is to score as much as possible without colliding with the walls or the snake's own body. The game speeds up as the score increases, providing a fun challenge for players.
 
-## 🎮 How to Play
+## 🎮How to Play
 
 - **Desktop Controls**: Use the arrow keys (Up, Down, Left, Right) or `WASD` keys to control the snake's direction.
 - **Mobile Controls**: Tap the on-screen buttons to move the snake.
@@ -35,12 +35,12 @@ The snake will grow every time it eats food, and the game will end if the snake 
 - **Sound Effects**: Enjoy sound effects for moving, eating, and game over events.
 - **Local High Score**: Your high score is saved in the browser.
 
-## 🤖 Technologies Used
+## 🤖Technologies Used
 - HTML5: Structure of the game.
 - CSS3: Styling and responsive design.
 - JavaScript: Game logic and dynamic behaviors.
 
-## 🙌 Contributions
+## 🙌Contributions
 Contributions, issues, and feature requests are welcome! Feel free to check out the issues page.
 
 🔗 Socials
