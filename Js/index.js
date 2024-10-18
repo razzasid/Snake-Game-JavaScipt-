@@ -192,30 +192,30 @@ window.requestAnimationFrame(main);
 
 // Handle touch input for direction controls
 document.getElementById("up").addEventListener("touchstart", () => {
-  if (!isPaused) {
-    inputDir.x = 0;
-    inputDir.y = -1;
+  if (!isPaused && inputDir.y === 0) {
+    // Prevent reversing direction
+    inputDir = { x: 0, y: -1 };
   }
 });
 
 document.getElementById("down").addEventListener("touchstart", () => {
-  if (!isPaused) {
-    inputDir.x = 0;
-    inputDir.y = 1;
+  if (!isPaused && inputDir.y === 0) {
+    // Prevent reversing direction
+    inputDir = { x: 0, y: 1 };
   }
 });
 
 document.getElementById("left").addEventListener("touchstart", () => {
-  if (!isPaused) {
-    inputDir.x = -1;
-    inputDir.y = 0;
+  if (!isPaused && inputDir.x === 0) {
+    // Prevent reversing direction
+    inputDir = { x: -1, y: 0 };
   }
 });
 
 document.getElementById("right").addEventListener("touchstart", () => {
-  if (!isPaused) {
-    inputDir.x = 1;
-    inputDir.y = 0;
+  if (!isPaused && inputDir.x === 0) {
+    // Prevent reversing direction
+    inputDir = { x: 1, y: 0 };
   }
 });
 
@@ -236,38 +236,39 @@ window.addEventListener("touchstart", (e) => {
     musicSound.play(); // Resume the music when the game is unpaused
   }
 });
-
 // Handle keydown events
 window.addEventListener("keydown", (e) => {
   moveSound.play();
   musicSound.play();
+
+  // Prevent snake from reversing direction
   switch (e.key) {
     case "ArrowUp":
     case "w":
-      if (!isPaused) {
-        inputDir.x = 0;
-        inputDir.y = -1;
+      if (inputDir.y === 0) {
+        // Only allow up if the snake is not already moving vertically
+        inputDir = { x: 0, y: -1 };
       }
       break;
     case "ArrowDown":
     case "s":
-      if (!isPaused) {
-        inputDir.x = 0;
-        inputDir.y = 1;
+      if (inputDir.y === 0) {
+        // Only allow down if the snake is not already moving vertically
+        inputDir = { x: 0, y: 1 };
       }
       break;
     case "ArrowLeft":
     case "a":
-      if (!isPaused) {
-        inputDir.x = -1;
-        inputDir.y = 0;
+      if (inputDir.x === 0) {
+        // Only allow left if the snake is not already moving horizontally
+        inputDir = { x: -1, y: 0 };
       }
       break;
     case "ArrowRight":
     case "d":
-      if (!isPaused) {
-        inputDir.x = 1;
-        inputDir.y = 0;
+      if (inputDir.x === 0) {
+        // Only allow right if the snake is not already moving horizontally
+        inputDir = { x: 1, y: 0 };
       }
       break;
     case " ":
